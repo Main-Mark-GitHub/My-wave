@@ -1,0 +1,30 @@
+{% extends 'mainapp/base.html' %}
+
+{% block 'body' %}
+
+    <div class="player">
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <label class="required" for="id_username">Username:</label>
+                <input type="text" name="username" class="vTextField" maxlength="15" required="" id="id_username">
+                <p> </p>
+                <label class="required" for="id_password">Password:</label>
+                <input type="password" name="password" class="vTextField" maxlength="15" required="" id="id_password">
+
+
+            </div>
+            <p></p>
+            <input type="submit" value="Log In" class="animated-submit" name="_save" id="inp">
+
+        </form>
+        <div class="container">
+            {% if error %}
+            <span class="error">{{error}}</span>
+            {% endif %}
+        </div>
+    </div>
+
+
+
+{% endblock %}

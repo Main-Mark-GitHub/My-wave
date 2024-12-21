@@ -1,0 +1,25 @@
+{% extends 'mainapp/account_base.html' %}
+
+{% block 'body' %}
+    <a href="/account/{{id}}/music/play_all">
+        <input type="submit" value="PLay All">
+    </a>
+    <p></p>
+    {% for el in music %}
+
+
+            <div >
+                <a href="/account/{{id}}/play/{{el.id}}">
+                    <div class="music_box">
+
+                            <td><img src="{{ el.cover.url }}"></td>
+
+                            <td>{{ el.title }}</td>
+                    </div>
+
+                </a>
+            </div>
+
+
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+
+# Django
+Main/media
+*.pot
+*.pyc
+
+Main/media
+staticfiles/
+*.DS_Store
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.env
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Local environment variables
+.env

@@ -1,0 +1,58 @@
+ {% extends 'mainapp/account_base.html' %}
+
+{% block 'body' %}
+        <div class="player">
+            <img height="300" width="300" id="musicCover">
+            <h1 id="musicTitle"></h1>
+            <h2 id="musicWriter"></h2>
+            <audio id="audioPlayer" controls>
+                <source id="audioSource"  type="audio/wav">
+                Your browser do not support audio
+            </audio>
+            <p></p>
+            <button id="playButton" class="playButton">Play</button>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+
+
+                    const music = {{ music|safe }};
+
+                    let currentTrack = 0;
+                    const audioPlayer = document.getElementById('audioPlayer');
+                    const audioSource = document.getElementById('audioSource');
+                    const musicTitle = document.getElementById('musicTitle');
+                    const musicWriter = document.getElementById('musicWriter');
+                    const musicCover = document.getElementById('musicCover');
+                    const playButton = document.getElementById('playButton');
+                    if (!musicCover.src) {
+                        musicCover.style.display = 'none';
+                    }
+
+                    function playMusic() {
+                        if (music.length === 0) return;
+
+                        const currentMusic = music[currentTrack];
+                        audioSource.src = currentMusic.file;
+                        musicTitle.textContent = currentMusic.title;
+                        musicWriter.textContent = currentMusic.writer;
+                        musicCover.src = currentMusic.cover;
+                        musicCover.style.display = 'block';
+                        audioPlayer.load();
+                        audioPlayer.play().catch(error => {
+                            console.error("Error:", error);
+                        });
+
+                        audioPlayer.onended = function() {
+                            currentTrack = (currentTrack + 1) % music.length;
+                            playMusic();
+                        };
+                    }
+
+                    playButton.addEventListener('click', function() {
+                        playMusic();
+                    });
+                });
+            </script>
+        </div>
+{% endblock %}

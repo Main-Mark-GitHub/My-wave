@@ -1,0 +1,16 @@
+{% extends 'mainapp/base.html' %}
+
+{% block 'body' %}
+    {% for el in music %}
+            <div >
+                <a href="/play/{{ el.id}}">
+                    <div class="music_box">
+                            <td><img src="{{ el.cover.url }}"></td>
+                            <td>{{ el.title }}</td>
+                    </div>
+                </a>
+            </div>
+
+
+    {% endfor %}
+{% endblock %}

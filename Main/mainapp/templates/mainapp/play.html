@@ -1,0 +1,24 @@
+ {% extends 'mainapp/base.html' %}
+
+{% block 'body' %}
+
+        <div class="player">
+
+                <img src="{{ el.cover.url }}" height="300" width="300">
+                <h1>{{ el.title }}</h1>
+                <h2>{{ el.writer }}</h2>
+
+
+                <audio controls="controls">
+                    <source src="{{ el.file.url }}" type="audio/ogg" />
+                    <source src="{{ el.file.url  }}" type="audio/mpeg" />
+                    <source src="{{ el.file.url }" type="audio/wav" />
+                    Your browser does not support the audio element.
+                </audio>
+
+        </div>
+
+
+
+
+{% endblock %}
