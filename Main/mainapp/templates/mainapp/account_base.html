@@ -13,11 +13,32 @@
 <body>
 
     <div class="container">
-        <a href="/account/{{id}}"><h1>My Wave</h1></a>
-        <span>
-            <a href="/account/{{id}}/music"><h3>My Favorite</h3></a>
+        <div class="menu">
+            <button class="menu_btn">Menu</button>
+            <div class="menuContent">
+                <a href="/account/{{id}}"><h1>My Wave</h1></a>
+                <span>
+                    <a href="/account/{{id}}/music"><h3>My Favorite</h3></a>
+                </span>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                  const menu = document.querySelector('.menu') // get element by class
+                  const menuContent = document.querySelector('.menuContent') // get element by class
 
-        </span>
+                  menu.addEventListener('click', function() { // set event
+                        menuContent.classList.toggle('show'); # show menu
+                    });
+                  window.onclick = function(event) {
+                        if (!event.target.matches('.menu_btn')) {
+                            if (menuContent.classList.contains('show')) {
+                                menuContent.classList.remove('show');
+                            }
+                        }
+
+                })
+            </script>
+        </div>
         {% block 'body' %}
         {% endblock %}
     </div>
